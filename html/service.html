@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uk-ji 고객센터</title>
+    <link rel="stylesheet" href="../css/service_style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- ✅ 네비게이션 바 -->
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="../img/Uk-Ji_logo.png" alt="Uk-ji 로고" class="logo-img"></a>
+            <div class="logo-text">
+                <h1><a href='index.html'>Uk-ji</a></h1>
+                <p class="subtitle">나의 건강을 공유하다.</p> <!-- 👈 하단으로 이동 -->
+            </div>
+        </div>
+
+        <nav class="nav-links">
+            <ul>
+                <li><a href="company.html">소개</a></li>
+                <li><a href="product_news.html">제품뉴스</a></li>
+                <li><a href="notice.html">공지사항</a></li>
+                <li><a href="service.html">고객센터</a></li>
+            </ul>
+        </nav>
+
+        <div class="user-menu">
+            <input type="text" id="searchInput" placeholder="검색어를 입력하세요">
+            <button class="search-btn" onclick="searchFunction()">
+                🔍
+            </button>
+            <a href="login.html" class="btn">로그인</a>
+            <a href='signup.html' class="btn">회원가입</button>
+            <a href="mypage.html" class="mypage-icon">
+                <i class="fas fa-user-circle"></i>
+            </a>
+        </div>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    </header>
+
+    <!-- 메인 콘텐츠 -->
+    <main class="container">
+        <!-- 검색 섹션 -->
+        <section class="search-box">
+            <input type="text" id="searchFAQ" placeholder="도움말 검색">
+            <button onclick="searchFAQ()">🔍</button>
+            <ul id="suggestions"></ul>
+        </section>
+
+        <!-- FAQ 섹션 -->
+        <section class="faq-section">
+            <h2>자주 찾는 도움말 (FAQ)</h2>
+            <ul id="faqList">
+                <li>📄 회원 가입은 어떻게 하나요?</li>
+                <li>📄 포인트 적립 기준은 무엇인가요?</li>
+                <li>📄 배송은 얼마나 걸리나요?</li>
+                <li>📄 환불 및 교환 정책이 궁금해요.</li>
+                <li>📄 비밀번호를 변경하고 싶어요.</li>
+            </ul>
+        </section>
+
+        <!-- 3가지 기능 -->
+        <section class="grid-container">
+            <div class="grid-item">
+                <h3>문의하기</h3>
+                <button class="btn">✏️ 1:1 문의하기</button>
+                <button class="btn">💬 AI 챗봇 상담</button>
+            </div>
+
+            <div class="grid-item">
+                <h3>문의 내역</h3>
+                <ul>
+                    <li>1. 회원 가입 어떻게 하나요? <span class="status completed">답변완료</span></li>
+                    <li>2. 리뷰 포인트가 안 들어와요. <span class="status processing">처리 중</span></li>
+                    <li>3. 비밀번호 변경하고 싶어요. <span class="status pending">접수 됨</span></li>
+                </ul>
+            </div>
+
+            <div class="grid-item">
+                <h3>보안</h3>
+                <button class="btn">🔑 아이디 찾기</button>
+                <button class="btn">🔒 비밀번호 변경</button>
+            </div>
+        </section>
+    </main>
+
+<!-- ✅ 푸터 -->
+    <footer>
+        <!-- 이메일 구독 -->
+        <div class="newsletter">
+            <h3>이메일로 최신 건강 정보와 할인 소식을 받아보세요!</h3>
+            <input type="email" placeholder="이메일 주소 입력">
+            <button>신청하기</button>
+        </div>
+
+        <div class="footer-top">
+            <!-- 회사 소개 -->
+            <div class="footer-section">
+                <h2>Uk-ji</h2>
+                <p>건강한 삶을 위한 최고의 선택! <br> 믿을 수 있는 영양제 정보와 커뮤니티를 제공합니다.</p>
+            </div>
+    
+            <!-- 유용한 링크 -->
+            <div class="footer-section">
+                <h3>회사 정보</h3>
+                <ul>
+                    <li><a href="company.html">회사 소개</a></li>
+                    <li><a href="notice.html">공지사항</a></li>
+                    <li><a href="#">제휴 프로그램</a></li>
+                    <li><a href="service.html">고객센터</a></li>
+                </ul>
+            </div>
+    
+            <!-- SNS & 앱 다운로드 -->
+            <div class="footer-section">
+                <h3>팔로우하세요</h3>
+                <div class="social-icons">
+                    <a href="#"><img src="../img/facebook_icon.png" alt="Facebook"></a>
+                    <a href="#"><img src="../img/instagram_icon.png" alt="Instagram"></a>
+                    <a href="#"><img src="../img/youtube_icon.png" alt="YouTube"></a>
+                </div>
+            </div>
+        </div>
+    
+        <!-- 저작권 및 정책 -->
+        <div class="footer-bottom">
+            <p>© 2025 Uk-ji. 모든 권리 보유. 모든 권한은 Uk-ji에 있습니다.</p>
+            <ul>
+                <li><a href="#">개인정보 처리방침</a></li>
+                <li><a href="#">이용약관</a></li>
+                <li><a href="#">자주 묻는 질문</a></li>
+            </ul>
+        </div>
+    </footer>
+
+</body>
+</html>
+
+
+    <script src="../js/service_js.js"></script>
+</body>
+</html>
