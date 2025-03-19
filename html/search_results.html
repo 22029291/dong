@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uk-ji | 나의 건강을 공유하다</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- Swiper.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- Swiper.js JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+</head>
+<body>
+
+    <!-- ✅ 네비게이션 바 -->
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="../img/Logo.png" alt="Uk-ji 로고" class="logo-img"></a>
+            <div class="logo-text">
+                <h1><a href='index.html'>Uk-ji</a></h1>
+                <p class="subtitle">나의 건강을 공유하다.</p> <!-- 👈 하단으로 이동 -->
+            </div>
+        </div>
+
+        <nav class="nav-links">
+            <ul>
+                <li><a href="company.html">소개</a></li>
+                <li><a href="product_news.html">제품뉴스</a></li>
+                <li><a href="notice.html">공지사항</a></li>
+                <li><a href="products.html">상품소개</a></li>
+                <li><a href="board.html">커뮤니티</a></li>
+            </ul>
+        </nav>
+
+        <div class="user-menu">
+            <a href="login.html" class="btn">로그인</a>
+            <a href='signup.html' class="btn">회원가입</button>
+            <a href="mypage.html" class="btn">
+                <i class="fas fa-user-circle"></i>
+            </a>
+        </div>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    </header>
+
+    <main>
+        <!-- 🔍 검색창 -->
+<section class="main-search">
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="어떤 정보를 찾고 계신가요?">
+        <button id="searchButton"></button>
+    </div>
+</section>
+<main>
+    <section class="search-results">
+        <h2>🔍 검색 결과</h2>
+        <p id="resultText">검색 중...</p>
+
+        <div id="resultsContainer" class="results-wrapper">
+            <!-- 예시 데이터 - 실제 데이터는 JavaScript에서 동적으로 생성됨 -->
+            <div class="shopping-site-results">
+                <div class="site-header">
+                    <h3>🛒 쿠팡</h3>
+                </div>
+                <div class="product-grid">
+                    <!-- 예시 상품 카드 -->
+                    <div class="product-card">
+                        <div class="rank-badge">1</div>
+                        <div class="product-image-wrapper">
+                            <img src="https://via.placeholder.com/300" alt="상품 이미지" class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <h4 class="product-title">상품명이 들어갈 자리입니다</h4>
+                            <p class="price">50,000원</p>
+                            <p class="sales-count">판매량 1,234개</p>
+                        </div>
+                    </div>
+                    <!-- 추가 예시 카드들 생략 -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // 예시 데이터 구조
+            const sampleData = {
+                coupang: [
+                    {
+                        title: "샘플 상품 1",
+                        price: 50000,
+                        sales_count: 1234,
+                        image_url: "https://via.placeholder.com/300",
+                        url: "#"
+                    },
+                    {
+                        title: "샘플 상품 2",
+                        price: 50000,
+                        sales_count: 1234,
+                        image_url: "https://via.placeholder.com/300",
+                        url: "#"
+                    },
+                    {
+                        title: "샘플 상품 3",
+                        price: 50000,
+                        sales_count: 1234,
+                        image_url: "https://via.placeholder.com/300",
+                        url: "#"
+                    }
+                    
+                ],
+                gmarket: [
+                {
+                        title: "샘플 상품 1",
+                        price: 50000,
+                        sales_count: 1234,
+                        image_url: "https://via.placeholder.com/300",
+                        url: "#"
+                    },
+                    {
+                        title: "샘플 상품 2",
+                        price: 50000,
+                        sales_count: 1234,
+                        image_url: "https://via.placeholder.com/300",
+                        url: "#"
+                    },
+                    {
+                        title: "샘플 상품 3",
+                        price: 50000,
+                        sales_count: 1234,
+                        image_url: "https://via.placeholder.com/300",
+                        url: "#"
+                    }
+                ],
+                naver: [
+                {
+                        title: "샘플 상품 1",
+                        price: 50000,
+                        sales_count: 1234,
+                        image_url: "https://via.placeholder.com/300",
+                        url: "#"
+                    },
+                    {
+                        title: "샘플 상품 2",
+                        price: 50000,
+                        sales_count: 1234,
+                        image_url: "https://via.placeholder.com/300",
+                        url: "#"
+                    },
+                    {
+                        title: "샘플 상품 3",
+                        price: 50000,
+                        sales_count: 1234,
+                        image_url: "https://via.placeholder.com/300",
+                        url: "#"
+                    }
+                ]
+            };
+    
+            // 크롤링 데이터를 받아와서 처리하는 함수
+            async function fetchProductData(query) {
+                try {
+                    // 여기에 실제 크롤링 API 호출 코드가 들어갈 예정
+                    // const response = await fetch(`/api/crawl?query=${encodeURIComponent(query)}`);
+                    // const data = await response.json();
+                    
+                    // 임시로 예시 데이터 사용
+                    return sampleData;
+                } catch (error) {
+                    console.error("데이터 가져오기 실패:", error);
+                    return null;
+                }
+            }
+    
+            // 검색 결과 표시 함수
+            function displayResults(data) {
+                let resultsContainer = document.getElementById("resultsContainer");
+                resultsContainer.innerHTML = "";
+    
+                Object.entries(data).forEach(([site, products]) => {
+                    let section = document.createElement("div");
+                    section.className = "shopping-site-results";
+                    
+                    let siteTitle = "";
+                    let siteIcon = "";
+                    switch(site) {
+                        case "coupang":
+                            siteTitle = "쿠팡";
+                            siteIcon = "🛒";
+                            break;
+                        case "gmarket":
+                            siteTitle = "지마켓";
+                            siteIcon = "🛍️";
+                            break;
+                        case "naver":
+                            siteTitle = "네이버 스마트스토어";
+                            siteIcon = "🟢";
+                            break;
+                    }
+    
+                    const top3Products = products.slice(0, 3);
+    
+                    section.innerHTML = `
+                        <div class="site-header">
+                            <h3>${siteIcon} ${siteTitle}</h3>
+                        </div>
+                        <div class="product-grid">
+                            ${top3Products.map((product, index) => `
+                                <a href="${product.url}" class="product-card" target="_blank">
+                                    <div class="rank-badge">${index + 1}</div>
+                                    <div class="product-image-wrapper">
+                                        <img src="${product.image_url}" alt="${product.title}" class="product-image">
+                                    </div>
+                                    <div class="product-info">
+                                        <h4 class="product-title">${product.title}</h4>
+                                        <p class="price">${product.price.toLocaleString()}원</p>
+                                        <p class="sales-count">판매량 ${product.sales_count.toLocaleString()}개</p>
+                                    </div>
+                                </a>
+                            `).join("")}
+                        </div>
+                    `;
+                    resultsContainer.appendChild(section);
+                });
+            }
+    
+            // 검색 실행 함수
+            async function performSearch(query) {
+                const resultText = document.getElementById("resultText");
+                resultText.textContent = "검색 중...";
+    
+                try {
+                    const data = await fetchProductData(query);
+                    if (data) {
+                        displayResults(data);
+                        resultText.textContent = `"${query}" 검색 결과`;
+                    } else {
+                        resultText.textContent = "검색 결과를 가져오는데 실패했습니다.";
+                    }
+                } catch (error) {
+                    resultText.textContent = "오류가 발생했습니다.";
+                    console.error(error);
+                }
+            }
+    
+            // 검색 실행 (예시)
+            performSearch("검색어");
+        });
+    </script>
+    
+    <!-- ✅ 푸터 -->
+    <footer>
+        <!-- 이메일 구독 -->
+        <div class="newsletter">
+            <h3>이메일로 최신 건강 정보와 할인 소식을 받아보세요!</h3>
+            <input type="email" placeholder="이메일 주소 입력">
+            <button>신청하기</button>
+        </div>
+
+        <div class="footer-top">
+            <!-- 회사 소개 -->
+            <div class="footer-section">
+                <h2>Uk-ji</h2>
+                <p>건강한 삶을 위한 최고의 선택! <br> 믿을 수 있는 영양제 정보와 커뮤니티를 제공합니다.</p>
+            </div>
+    
+            <!-- 유용한 링크 -->
+            <div class="footer-section">
+                <h3>회사 정보</h3>
+                <ul>
+                    <li><a href="company.html">회사 소개</a></li>
+                    <li><a href="notice.html">공지사항</a></li>
+                    <li><a href="#">제휴 프로그램</a></li>
+                </ul>
+            </div>
+    
+            <!-- SNS & 앱 다운로드 -->
+            <div class="footer-section">
+                <h3>팔로우하세요</h3>
+                <div class="social-icons">
+                    <a href="#"><img src="../img/facebook_icon.png" alt="Facebook"></a>
+                    <a href="#"><img src="../img/instagram_icon.png" alt="Instagram"></a>
+                    <a href="#"><img src="../img/youtube_icon.png" alt="YouTube"></a>
+                </div>
+            </div>
+        </div>
+    
+        <!-- 저작권 및 정책 -->
+        <div class="footer-bottom">
+            <p>© 2025 Uk-ji. 모든 권리 보유. 모든 권한은 Uk-ji에 있습니다.</p>
+            <ul>
+                <li><a href="#">개인정보 처리방침</a></li>
+                <li><a href="#">이용약관</a></li>
+                <li><a href="#">자주 묻는 질문</a></li>
+            </ul>
+        </div>
+    </footer>
+
+</html>
+
+<style>
+    .results-wrapper {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .shopping-site-results {
+        margin-bottom: 3rem;
+        padding: 1.5rem;
+        border-radius: 12px;
+        background-color: #ffffff;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .site-header {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid #f0f0f0;
+    }
+
+    .site-header h3 {
+        font-size: 1.5rem;
+        color: #333;
+    }
+
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+
+    .product-card {
+        position: relative;
+        background: white;
+        border-radius: 12px;
+        padding: 1rem;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.08);
+        transition: all 0.3s ease;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .rank-badge {
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        width: 30px;
+        height: 30px;
+        background-color: #ff4757;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        z-index: 1;
+    }
+
+    .product-image-wrapper {
+        position: relative;
+        padding-top: 100%;
+        overflow: hidden;
+        border-radius: 8px;
+    }
+
+    .product-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .product-info {
+        padding: 1rem 0;
+    }
+
+    .product-title {
+        font-size: 1rem;
+        margin: 0.5rem 0;
+        color: #333;
+        /* Webkit 브라우저용 */
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        /* 표준 속성 */
+        display: box;
+        box-orient: vertical;
+        line-clamp: 2;
+        /* 공통 속성 */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-word;
+        line-height: 1.4;
+        max-height: 2.8em; /* line-height * 2줄 */
+    }
+    .price {
+        color: #ff4757;
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin: 0.5rem 0;
+    }
+
+    .sales-count {
+        color: #666;
+        font-size: 0.9rem;
+        margin: 0;
+    }
+
+    @media (max-width: 768px) {
+        .product-grid {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+</style> 
